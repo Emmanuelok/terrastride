@@ -1,0 +1,12 @@
+import {build as viteBuild} from 'vite';
+import react from '@vitejs/plugin-react';
+import {createRequire} from 'node:module';
+import {readFile,mkdir,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+const root=process.cwd(),require=createRequire(import.meta.url);
+const {build}=require(require.resolve('esbuild',{paths:[require.resolve('wrangler/package.json')]}));
+await viteBuild({configFile:false,root:path.join(root,'commerce'),publicDir:path.join(root,'public'),plugins:[react()],resolve:{alias:{'@':root}},css:{postcss:path.join(root,'postcss.config.mjs')},build:{outDir:path.join(root,'dist/client'),emptyOutDir:true}});
+await mkdir('dist/server',{recursive:true});
+await build({entryPoints:['commerce/worker.ts'],outfile:'dist/server/index.js',bundle:true,format:'esm',target:'es2022',platform:'neutral',minify:true,external:['cloudflare:workers'],alias:{'@':root},plugins:[{name:'raw-data',setup(b){b.onResolve({filter:/\?raw$/},args=>({path:path.resolve(args.path.startsWith('@/')?root:args.resolveDir,args.path.replace(/^@\//,'').replace(/\?raw$/,'')),namespace:'raw-data'}));b.onLoad({filter:/.*/,namespace:'raw-data'},async args=>({contents:await readFile(args.path,'utf8'),loader:'text'}));}}]});
+await writeFile('dist/server/wrangler.json',JSON.stringify({name:'stride-ghana',main:'index.js',compatibility_date:'2026-06-01',compatibility_flags:['nodejs_compat'],assets:{directory:'../client',binding:'ASSETS',run_worker_first:true},d1_databases:[{binding:'DB',database_name:'site-creator-d1',database_id:'00000000-0000-4000-8000-000000000000',migrations_dir:'../../drizzle'}]},null,2));
+console.log('STRIDE client and Worker production build complete.');
