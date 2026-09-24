@@ -44,3 +44,7 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+
+# Product photographs live in Cloudflare R2; manifest and migration scripts are source.
+/public/catalogue-images/
+*.tsbuildinfo

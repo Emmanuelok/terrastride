@@ -4,13 +4,17 @@ A health, sport and fitness catalogue and pre-launch commerce platform for Ghana
 
 The reference catalogue includes 6,272 normalized source product models in 22 departments and 153 populated categories. Every record retains its price source, currency, source product URL and associated photography. Prices and availability are explicitly references, not confirmed STRIDE inventory.
 
+See [the recovered inventory](docs/RECOVERY.md) and [Cloudflare deployment instructions](docs/HOSTING.md). All four original Site versions remain in Git history.
+
 ## Run and build
 
 - `npm run dev`: full-stack Vinext development server using the installed Sites execution profile.
-- `npm run build`: Vite React storefront and a directly bundled Cloudflare Worker. This avoids the environment's stalled RSC production analysis while preserving the same API modules and UI.
+- `pnpm build`: Vite React storefront and Cloudflare Worker, with every product image rewritten to the verified same-origin R2 copy. Requires the complete committed image manifest.
+- `pnpm verify`: shopping isolation, enquiry persistence and image-route verification.
+- `pnpm run deploy`: verify/sync R2 images, then publish the Worker.
 - `npm run db:generate`: generate Drizzle schema migrations after reviewed schema changes.
 
-Production output is `dist/client` for assets and `dist/server/index.js` for the Worker; `dist/server/wrangler.json` describes logical DB and asset bindings. `.openai/hosting.json` retains the Sites identity. The platform assigns production infrastructure.
+Production output is `dist/client` for assets and `dist/server/index.js` for the Worker; `dist/server/wrangler.json` describes logical DB and asset bindings. `.openai/hosting.json` retains historical Sites provenance. `wrangler.json` identifies the independent Cloudflare D1 and R2 resources.
 
 ## Features
 
@@ -20,11 +24,11 @@ Department/subcategory navigation, source-brand and price filters, search, pagin
 
 ## Launch status
 
-Private pre-launch catalogue. Requests are saved, but not sent to suppliers or staff. No payment processor, live merchant inventory, fulfilment/courier or staff administration is connected. Contact methods, live selling prices, supplier permission for commercial images, regulated-product registration, delivery and returns/warranty policies need merchant confirmation before public trading. Do not introduce fake availability, reviews, discounts or delivery promises.
+Public catalogue and enquiry preview, retaining pre-launch commerce disclosures. Requests are saved, but not sent to suppliers or staff. No payment processor, live merchant inventory, fulfilment/courier or staff administration is connected. Contact methods, live selling prices, supplier permission for commercial images, regulated-product registration, delivery and returns/warranty policies need merchant confirmation before public trading. Do not introduce fake availability, reviews, discounts or delivery promises.
 
 ## Verification
 
-TypeScript checks; complete catalogue ID/URL/category/provenance audits; 1,906 sampled image URLs; SQLite migration, ownership, quantity-upsert and request-idempotency checks. Browser preview was unavailable in this environment; full visual/browser validation remains outstanding.
+The deployment build runs TypeScript and integration checks for catalogue routes, shopping sessions, guest isolation, request idempotency, input validation, origin checks, CSV export and same-origin image delivery. The image manifest covers every primary and gallery image, with byte counts, MIME types and content hashes. Historical source audits remain in `data/`.
 
 ## Commerce design references
 
