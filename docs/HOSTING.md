@@ -25,6 +25,8 @@ The build validates the complete image manifest and rewrites catalogue imagery t
 
 The deploy command first syncs missing gallery objects into R2, then publishes the Worker. It uses the existing Cloudflare Builds token from `CLOUDFLARE_API_TOKEN`, derives S3 credentials only in memory, and never logs credentials. The token needs Workers deployment and R2 read/write permissions. Missing permissions or failed asset checks stop publication. Successful objects survive interrupted builds; rerunning skips existing objects after checking size, MIME type and stored SHA-256 metadata. Cloudflare Builds has a 20-minute execution limit, so the first large image transfer may require a retry.
 
+Local photographs must match the recovery manifest exactly. When the build downloads a photograph from its original pinned source URL, CDN encoding or source changes can produce different bytes. The importer requires the expected image format and a bounded raster image, records both the recovery hash and actual uploaded hash/size in R2 metadata, and logs every changed rendition. Matching URL and format do not establish identical pixels; the original recovery manifest and local files remain the reference snapshot. Subsequent deployments verify the stored snapshot identity, actual size, MIME and hash metadata before skipping an object.
+
 To recover photographs locally: `pnpm images:mirror -- --concurrency=24`. To upload them from an authenticated environment: `pnpm images:sync`. The original URLs, verified content hashes, file sizes and MIME types are in `data/image-mirror-manifest.json`.
 
 ## Database

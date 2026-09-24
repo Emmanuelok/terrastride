@@ -37,6 +37,8 @@ Original source image URLs remain in the catalogue and migration manifest for pr
 
 All 30,292 primary/gallery image URLs were recovered with zero failures, totalling 3,061,121,705 bytes. Every local file was checked against its recorded SHA-256 and byte length; source URL coverage and deterministic destination paths were also verified. The original catalogue data files remain unchanged.
 
+The Cloudflare build fetches the original image URLs when no local recovery file is available. Some CDN responses differ from the recovered bytes; these are validated as the same raster format and logged as changed source renditions. R2 metadata distinguishes the original recovery hash from the actual hosted object's hash and size. The hosted image library therefore preserves the source URL coverage, but is not claimed to be byte-identical to the local recovery snapshot.
+
 ## Existing commercial limitations
 
 STRIDE is a catalogue and enquiry application. It does not collect payment, confirm stock, notify staff, dispatch deliveries, or provide a merchant administration workflow. Prices are planning estimates, including fixed illustrative currency multipliers; they are not guaranteed selling prices. The UI retains these disclosures. Merchant inventory, prices, supplier arrangements and commercial policies require separate completion before taking orders.
