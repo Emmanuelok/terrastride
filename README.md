@@ -25,3 +25,12 @@ Private pre-launch catalogue. Requests are saved, but not sent to suppliers or s
 ## Verification
 
 TypeScript checks; complete catalogue ID/URL/category/provenance audits; 1,906 sampled image URLs; SQLite migration, ownership, quantity-upsert and request-idempotency checks. Browser preview was unavailable in this environment; full visual/browser validation remains outstanding.
+
+## Commerce design references
+
+The current visual edition is an original implementation informed by the public Gadget (Combine) and Throne (King) Shopify demos: spacious visual category navigation, paired campaign/product storytelling, rounded surfaces, and direct shopping controls. No commercial theme package, demo product content, or demo imagery is used. STRIDE keeps its own campaign imagery and sourced fitness catalogue.
+
+- https://themes.shopify.com/themes/combine/presets/gadget
+- https://themes.shopify.com/themes/king/presets/throne
+
+Featured product carousel data is a small selection of existing catalogue records in `data/storefront-edit.json`. Collection tabs use the existing catalogue API.
