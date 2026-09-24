@@ -1,0 +1,92 @@
+.stride-product-detail { align-items: start; }
+.stride-product-detail .stride-product-gallery { min-width: 0; }
+.stride-product-detail .stride-product-image-frame { position: relative; overflow: hidden; border-radius: 18px; background: #f3f6f0; }
+.stride-product-detail .stride-product-image-trigger { position: relative; display: block; width: 100%; cursor: zoom-in; border-radius: inherit; }
+.stride-product-detail .main-product-image { display: block; width: 100%; height: min(590px, 62vw); padding: 36px 42px 58px; object-fit: contain; }
+.stride-product-detail .stride-product-image-unavailable { display: grid; min-height: 350px; place-items: center; color: #65765e; }
+.stride-product-detail .stride-product-zoom-hint { position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; padding: 8px 13px; border: 1px solid #dce4d5; border-radius: 25px; background: #fffffff0; color: #3e5534; font-size: 12px; white-space: nowrap; }
+.stride-product-detail .stride-product-image-arrows { position: absolute; inset: 50% 12px auto; transform: translateY(-50%); display: flex; justify-content: space-between; pointer-events: none; }
+.stride-product-detail .stride-product-image-arrows button { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid #d6dfcf; border-radius: 50%; background: #fffffff0; color: #32482a; pointer-events: auto; transition: background .15s ease; }
+.stride-product-detail .stride-product-image-arrows button:hover { background: #e5efda; }
+.stride-product-detail .stride-product-thumbnails { position: relative; gap: 10px; margin-top: 12px; padding: 5px 3px 12px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: #a7b897 transparent; overscroll-behavior-x: contain; }
+.stride-product-detail .stride-product-thumbnails button { width: 76px; height: 76px; background: #f3f6f0; border-radius: 10px; transition: border-color .15s ease; }
+.stride-product-detail .stride-product-thumbnails button.active { border-color: #567a39; box-shadow: 0 0 0 1px #567a39; }
+.stride-product-detail .stride-product-title { font-family: Arial, Helvetica, sans-serif; font-size: clamp(27px, 2.5vw, 35px); line-height: 1.17; letter-spacing: -.035em; font-weight: 500; margin: 15px 0; overflow-wrap: anywhere; }
+.stride-product-detail .stride-product-purchase { margin: 25px 0; }
+.stride-product-detail .stride-product-purchase > label { display: block; font-size: 13px; font-weight: 600; color: #425936; margin: 0 0 9px; }
+.stride-product-detail .stride-product-purchase-row { display: flex; gap: 12px; align-items: stretch; }
+.stride-product-detail .stride-product-quantity { display: flex; align-items: center; flex-shrink: 0; min-height: 51px; border: 1px solid #c6d5b9; border-radius: 28px; padding: 3px; background: #fff; }
+.stride-product-detail .stride-product-quantity button { display: grid; place-items: center; width: 36px; height: 40px; border-radius: 50%; color: #354d29; }
+.stride-product-detail .stride-product-quantity button:hover:not(:disabled) { background: #edf3e6; }
+.stride-product-detail .stride-product-quantity input { width: 36px; height: 40px; margin: 0; padding: 0; background: transparent; color: #24381b; border: 0; border-radius: 3px; text-align: center; font: inherit; font-size: 16px; appearance: textfield; box-shadow: none; }
+.stride-product-detail .stride-product-quantity input::-webkit-inner-spin-button,
+.stride-product-detail .stride-product-quantity input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.stride-product-detail .stride-product-add { flex: 1; min-width: 0; justify-content: center; gap: 9px; padding-left: 18px; padding-right: 18px; }
+.stride-product-detail .stride-product-secondary-actions { display: flex; flex-wrap: wrap; column-gap: 22px; row-gap: 8px; margin-top: 13px; }
+.stride-product-detail .stride-product-secondary-actions button { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font-size: 13px; color: #4c6240; border-bottom: 1px solid transparent; }
+.stride-product-detail .stride-product-secondary-actions button:hover { color: #243c16; border-bottom-color: currentColor; }
+.stride-product-detail .stride-product-secondary-actions .is-saved { color: #3f6628; font-weight: 600; }
+.stride-product-detail button:disabled { opacity: .45; cursor: not-allowed; }
+.stride-product-detail button:focus-visible,
+.stride-product-detail input:focus-visible,
+.stride-product-detail a:focus-visible { outline: 2px solid #517637; outline-offset: 3px; }
+.stride-product-detail .stride-product-share-status { margin: 8px 0 0; font-size: 13px; color: #4c6240; }
+.stride-product-detail .stride-product-share-fallback { margin-top: 10px; }
+.stride-product-detail .stride-product-share-fallback label { display: block; font-size: 12px; margin-bottom: 5px; }
+.stride-product-detail .stride-product-share-fallback input { width: 100%; min-width: 0; padding: 10px 12px; color: #304626; background: #f4f7ef; border: 1px solid #c6d5b9; border-radius: 6px; font-size: 14px; }
+.stride-product-detail .stride-product-copy [data-slot=tabs-content] p { margin-bottom: 16px; }
+.stride-product-detail .stride-product-copy dl { margin-top: 18px; }
+.stride-product-detail .stride-product-copy dt,
+.stride-product-detail .stride-product-copy dd { min-width: 0; overflow-wrap: anywhere; }
+.stride-product-detail .stride-product-full-link { margin-top: 22px; font-size: 14px; }
+.stride-product-detail.compact .main-product-image { height: 390px; padding: 28px 35px 55px; }
+.stride-product-detail.compact .stride-product-title { font-size: 27px; }
+
+/* Reset the dialog's centering variables as well as its transform: the CSS
+   minifier can lower `translate: none` to a transform without cancelling the
+   separate translate property used by Tailwind's dialog utilities. */
+[data-slot=dialog-content].stride-product-lightbox { --tw-translate-x: 0px; --tw-translate-y: 0px; position: fixed; z-index: 100; inset: 0; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 0; width: 100vw; height: 100dvh; max-width: none !important; max-height: none; transform: none; translate: none; padding: 0; border: 0 !important; border-radius: 0; background: #f5f7f2 !important; color: #24341e; animation: none; }
+.stride-product-lightbox .stride-product-lightbox-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: max(20px, env(safe-area-inset-top)) max(28px, env(safe-area-inset-right)) 20px max(28px, env(safe-area-inset-left)); border-bottom: 1px solid #dce4d5; background: #fffffff2; }
+.stride-product-lightbox .stride-product-lightbox-header > div:first-child { min-width: 0; }
+.stride-product-lightbox [data-slot=dialog-title] { font-family: Arial, Helvetica, sans-serif; font-size: 18px !important; line-height: 1.35 !important; margin: 0; letter-spacing: -.02em; }
+.stride-product-lightbox [data-slot=dialog-description] { color: #617255 !important; font-size: 12px !important; line-height: 1.55 !important; margin: 6px 0 0; }
+.stride-product-lightbox .stride-product-lightbox-tools { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.stride-product-lightbox .stride-product-lightbox-tools button { display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid #d4dfcd; border-radius: 50%; background: #fff; }
+.stride-product-lightbox .stride-product-lightbox-tools button:hover { background: #e8efdf; }
+.stride-product-lightbox .stride-product-lightbox-viewport { min-width: 0; min-height: 0; overflow: auto; overscroll-behavior: contain; }
+.stride-product-lightbox .stride-product-lightbox-image { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-width: 100%; padding: 24px; cursor: zoom-in; }
+.stride-product-lightbox .stride-product-lightbox-image.is-zoomed { width: 200%; height: 200%; max-width: none; cursor: zoom-out; }
+.stride-product-lightbox .stride-product-lightbox-image img { display: block; width: 100%; height: 100%; max-width: none; object-fit: contain; mix-blend-mode: multiply; }
+.stride-product-lightbox .stride-product-image-unavailable { padding: 40px; color: #617255; }
+.stride-product-lightbox .stride-product-lightbox-footer { display: flex; align-items: center; justify-content: center; gap: 30px; padding: 14px 24px max(14px, env(safe-area-inset-bottom)); border-top: 1px solid #dce4d5; background: #fffffff2; font-size: 13px; color: #4c6240; }
+.stride-product-lightbox .stride-product-lightbox-footer button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 10px; border-radius: 25px; }
+.stride-product-lightbox .stride-product-lightbox-footer button:hover { background: #e8efdf; }
+.stride-product-lightbox button:focus-visible { outline: 2px solid #517637; outline-offset: -3px; }
+
+@media (max-width: 900px) {
+  .stride-product-detail { grid-template-columns: minmax(0, 1fr); }
+  .stride-product-detail .main-product-image { height: 470px; }
+  .stride-product-detail.compact .main-product-image { height: 350px; }
+}
+
+@media (max-width: 600px) {
+  .stride-product-detail .main-product-image { height: 350px; padding: 25px 38px 60px; }
+  .stride-product-detail .stride-product-title { font-size: 29px; }
+  .stride-product-detail .stride-product-image-frame { border-radius: 15px; }
+  .stride-product-detail .stride-product-image-arrows { left: 8px; right: 8px; }
+  .stride-product-detail .stride-product-image-arrows button { width: 36px; height: 42px; }
+  .stride-product-detail .stride-product-thumbnails button { width: 64px; height: 64px; }
+  .stride-product-detail .stride-product-purchase-row { gap: 10px; }
+  .stride-product-detail .stride-product-add { padding: 12px 15px; font-size: 14px; }
+  .stride-product-detail .stride-product-secondary-actions { column-gap: 18px; }
+  .stride-product-detail .stride-product-secondary-actions button { font-size: 12px; }
+  .stride-product-detail .product-tabs button { padding: 11px 7px !important; font-size: 12px !important; }
+  .stride-product-detail.compact .main-product-image { height: 300px; }
+  .stride-product-lightbox .stride-product-lightbox-header { align-items: flex-start; gap: 14px; padding: max(16px, env(safe-area-inset-top)) 15px 14px; }
+  .stride-product-lightbox [data-slot=dialog-title] { font-size: 15px !important; }
+  .stride-product-lightbox [data-slot=dialog-description] { display: none; }
+  .stride-product-lightbox .stride-product-lightbox-tools { gap: 6px; }
+  .stride-product-lightbox .stride-product-lightbox-tools button { width: 40px; height: 40px; }
+  .stride-product-lightbox .stride-product-lightbox-image { padding: 12px; }
+  .stride-product-lightbox .stride-product-lightbox-footer { justify-content: space-between; gap: 12px; padding-left: 15px; padding-right: 15px; }
+}
