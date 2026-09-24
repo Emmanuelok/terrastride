@@ -1,0 +1,253 @@
+{
+  "count": 6272,
+  "uniqueIds": 6272,
+  "uniqueSourceUrls": 6272,
+  "uniqueBrandNames": 6272,
+  "sources": {
+    "SupplementSource.ca": 638,
+    "Canadian Protein": 112,
+    "Decathlon Ghana": 3088,
+    "Northern Fitness": 1005,
+    "LMNT": 4,
+    "Ryderwear": 490,
+    "Ultima Replenisher": 5,
+    "Bells of Steel": 318,
+    "Titan Fitness": 246,
+    "Ability Superstore": 136,
+    "Manduka": 84,
+    "Rehband": 111,
+    "Amazfit": 35
+  },
+  "departments": {
+    "team-sports": {
+      "Balls": 63,
+      "Teamwear & Accessories": 192,
+      "Goals & Training Equipment": 31
+    },
+    "swimming": {
+      "Swimwear": 226,
+      "Water Sports Equipment": 149,
+      "Goggles & Swim Accessories": 82
+    },
+    "outdoor": {
+      "Camping Equipment": 68,
+      "Outdoor Accessories": 177,
+      "Hiking Clothing": 95,
+      "Backpacks & Bags": 61
+    },
+    "strength": {
+      "Benches & Racks": 14,
+      "Weight Plates & Barbells": 11,
+      "Dumbbells & Kettlebells": 7,
+      "Lifting Accessories": 77,
+      "Dumbbells": 46,
+      "Bench Attachments": 39,
+      "Strength Machines": 92,
+      "Squat Wedges": 6,
+      "Kettlebells": 30,
+      "Weight Plates": 56,
+      "Benches": 65,
+      "Barbells": 89,
+      "Rack Attachments": 175,
+      "Functional Trainers": 34,
+      "Cable Attachments": 92,
+      "Home Gyms": 24,
+      "Racks": 50,
+      "Dumbbell Accessories": 13,
+      "Lifting Supports": 30,
+      "Grip Trainers": 6
+    },
+    "cycling": {
+      "Bike Parts & Accessories": 391,
+      "Bikes": 31,
+      "Cycling Clothing": 24,
+      "Helmets & Safety": 25
+    },
+    "functional": {
+      "Training Accessories": 116,
+      "Mats & Balance": 25,
+      "Resistance Bands": 41,
+      "Balance Trainers": 13,
+      "Weighted Vests": 27,
+      "Slam Balls": 6,
+      "Jump Ropes": 6,
+      "Bodyweight Trainers": 34,
+      "Sleds": 36,
+      "Agility Equipment": 10,
+      "Battle Ropes": 5,
+      "Wearable Weights": 1,
+      "Medicine Balls": 6,
+      "Functional Weights": 4,
+      "Plyometric Boxes": 13,
+      "Carry Trainers": 3,
+      "Sandbags": 6
+    },
+    "racket-sports": {
+      "Tables & Nets": 34,
+      "Balls & Court Accessories": 139,
+      "Rackets & Bats": 53
+    },
+    "combat": {
+      "Gloves & Protective Gear": 37,
+      "Combat Clothing & Accessories": 17,
+      "Bags & Training Equipment": 19,
+      "Boxing Equipment": 4
+    },
+    "footwear": {
+      "Training & Court Shoes": 234,
+      "Hiking Shoes": 48,
+      "Water Shoes & Sandals": 35,
+      "Football Boots": 38,
+      "Running Shoes": 41,
+      "Training Shoes": 6
+    },
+    "recovery": {
+      "Supports & Care": 15,
+      "Recovery Tools": 57,
+      "Supports & Sleeves": 85,
+      "Hot & Cold Recovery": 2,
+      "Foam Rollers": 16,
+      "Massage Guns": 13,
+      "Compression Recovery": 6,
+      "Red Light Therapy": 4,
+      "Compression Boots": 5,
+      "Massage Balls": 8,
+      "Inversion Tables": 5,
+      "Cold Plunges": 9,
+      "Vibration Plates": 8,
+      "Massage Tools": 5,
+      "Sauna Blankets & Mats": 6
+    },
+    "hydration": {
+      "Bottles & Hydration Packs": 43,
+      "Electrolytes": 21,
+      "Bottles & Shakers": 7,
+      "Water Bottles": 2
+    },
+    "mens": {
+      "Joggers & Trousers": 31,
+      "Activewear": 38,
+      "Leggings & Tights": 7,
+      "Socks": 31,
+      "Hats & Headwear": 13,
+      "Shorts": 79,
+      "Tanks & Crop Tops": 23,
+      "T-Shirts & Tops": 62,
+      "Jackets & Layers": 21,
+      "Underwear": 6,
+      "Hoodies & Sweatshirts": 24
+    },
+    "womens": {
+      "T-Shirts & Tops": 69,
+      "Shorts": 82,
+      "Hoodies & Sweatshirts": 17,
+      "Jackets & Layers": 18,
+      "Leggings & Tights": 118,
+      "Sports Bras": 121,
+      "Tanks & Crop Tops": 43,
+      "Hats & Headwear": 6,
+      "Activewear": 38,
+      "Joggers & Trousers": 18,
+      "Underwear": 1,
+      "Socks": 6,
+      "Bodysuits": 3
+    },
+    "cardio": {
+      "Treadmills": 50,
+      "Exercise Bikes": 53,
+      "Rowing Machines": 26,
+      "Ellipticals & Steppers": 1,
+      "Cardio Accessories": 21,
+      "Stair Climbers": 16,
+      "Ellipticals": 26,
+      "Rebounders": 3,
+      "Rope Trainers": 3,
+      "Ski Trainers": 2
+    },
+    "yoga": {
+      "Mats & Props": 106,
+      "Pilates Equipment": 38,
+      "Pilates Reformers": 12
+    },
+    "gym-facilities": {
+      "Bags & Gym Accessories": 29,
+      "Storage": 110,
+      "Flooring": 25,
+      "Gym Accessories": 1
+    },
+    "wearables": {
+      "Watches & Fitness Tech": 16,
+      "Smartwatches & Trackers": 24,
+      "Audio & Accessories": 11,
+      "Heart Rate Monitors": 3
+    },
+    "nutrition": {
+      "Sports Food & Drink": 7,
+      "Greens & Superfoods": 25,
+      "Sports Carbohydrates": 9,
+      "Protein Snacks": 35,
+      "Meal Replacements": 1,
+      "Bars & Foods": 15
+    },
+    "accessibility": {
+      "Rehabilitation Tools": 1,
+      "Mobility Aids": 107,
+      "Adaptive Exercise & Sport": 24
+    },
+    "supplements": {
+      "Performance Supplements": 62,
+      "Pre-Workout": 61,
+      "Amino Acids": 75,
+      "Creatine": 39
+    },
+    "protein": {
+      "Other Protein": 9,
+      "Mass Gainers": 8,
+      "Whey Protein": 27,
+      "Casein Protein": 4,
+      "Collagen Protein": 26,
+      "Protein Powders": 25,
+      "Plant Protein": 15
+    },
+    "vitamins": {
+      "Health Supplements": 181,
+      "Vitamins": 33,
+      "Minerals": 42,
+      "Omega Oils": 23,
+      "Multivitamins": 22
+    }
+  },
+  "processing": {
+    "decathlon-ghana": 3088,
+    "deduplicated": 1793,
+    "no-image-price-category": 47,
+    "ryderwear": 528,
+    "manduka": 84,
+    "rehband": 111,
+    "amazfit": 35,
+    "abilitysuperstore": 163,
+    "lmnt": 4,
+    "ultima": 5,
+    "supplements": 750,
+    "northernfitness": 1005,
+    "bellsofsteel": 318,
+    "titan": 246,
+    "global-deduplicated": 38
+  },
+  "illustrativeCurrencyMultipliers": {
+    "GHS": 1,
+    "USD": 12,
+    "CAD": 9,
+    "GBP": 16,
+    "EUR": 14
+  },
+  "provenance": {
+    "rawSourceProductRecords": 12547,
+    "productsChecked": 6272,
+    "issues": []
+  },
+  "uniqueCanonicalBrandModels": 6272,
+  "populatedDepartments": 22,
+  "allPricesMarkedPlanningEstimate": true,
+  "allRecordsHaveImagesAndSource": true
+}
