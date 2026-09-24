@@ -48,3 +48,6 @@ next-env.d.ts
 # Product photographs live in Cloudflare R2; manifest and migration scripts are source.
 /public/catalogue-images/
 *.tsbuildinfo
+
+# Local Worker secrets
+.dev.vars*

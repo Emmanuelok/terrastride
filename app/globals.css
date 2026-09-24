@@ -3,3 +3,5 @@
 @import "../vendor/shadcn-tailwind-4.13.0.css";
 @import "./base-store.css";
 @import "./commerce-theme.css";
+
+@import "./account-launch.css";

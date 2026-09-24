@@ -14,14 +14,18 @@
     "db:generate": "drizzle-kit generate",
     "deploy": "node scripts/deploy-cloudflare.mjs",
     "db:migrate": "wrangler d1 migrations apply DB --remote --config wrangler.json",
-    "verify": "node scripts/verify-commerce.mjs",
+    "verify": "node scripts/verify-commerce.mjs && node scripts/verify-auth.mjs && node scripts/verify-pwa.mjs --built && node scripts/verify-launch.mjs",
     "images:mirror": "node scripts/mirror-images.mjs",
-    "images:sync": "node scripts/sync-images-r2.mjs"
+    "images:sync": "node scripts/sync-images-r2.mjs",
+    "verify:auth": "node scripts/verify-auth.mjs",
+    "verify:pwa": "node scripts/verify-pwa.mjs --built",
+    "verify:launch": "node scripts/verify-launch.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
     "@hookform/resolvers": "^5.7.1",
     "@shadcn/react": "^0.3.0",
+    "better-auth": "1.7.5",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "cmdk": "^1.1.1",

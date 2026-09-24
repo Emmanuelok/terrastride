@@ -1,11 +1,11 @@
 import {createRequire} from 'node:module';
-import {readFile,mkdir,rm} from 'node:fs/promises';
+import {readFile,readdir,mkdir,rm} from 'node:fs/promises';
 import {DatabaseSync} from 'node:sqlite';
 import {pathToFileURL} from 'node:url';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 const root=process.cwd(),require=createRequire(import.meta.url),{build}=require(require.resolve('esbuild',{paths:[require.resolve('wrangler/package.json')]}));
-const sql=new DatabaseSync(':memory:');sql.exec(await readFile('drizzle/0000_chemical_lady_ursula.sql','utf8'));
+const sql=new DatabaseSync(':memory:');for(const migration of (await readdir('drizzle')).filter(name=>name.endsWith('.sql')).sort())sql.exec(await readFile('drizzle/'+migration,'utf8'));
 const statement=(query,params=[])=>({bind:(...p)=>statement(query,p),all:async()=>({results:sql.prepare(query).all(...params)}),first:async()=>sql.prepare(query).get(...params)||null,run:async()=>({success:true,...sql.prepare(query).run(...params)})});
 globalThis.__strideTestEnv={DB:{prepare:query=>statement(query),batch:async tasks=>Promise.all(tasks.map(x=>x.all()))}};
 await mkdir('.sites-runtime',{recursive:true});
@@ -37,7 +37,20 @@ const csv=await call('/api/export');assert.equal(csv.status,200);assert.match(cs
 assert.equal(csv.headers.get('Content-Type'),'text/csv; charset=utf-8');assert.deepEqual(Buffer.from(await csv.arrayBuffer()),csvAsset);
 assert.deepEqual([...csvAsset.subarray(0,3)],[0xef,0xbb,0xbf]);assert.match(csvAsset.toString('utf8'),/sourceUrl,image\r\n/);assert.match(csvAsset.toString('utf8'),/\/catalogue-images\//);
 assert.equal((await call('/api/export',{unexpected:true})).status,405);
-assert.equal((await call('/tools')).status,200);assert.equal((await call('/api/unknown')).status,404);
+assert.equal((await call('/tools')).status,200);
+assert.equal((await call('/api/auth/get-session')).status,503);
+assert.equal((await call('/api/admin')).status,503);
+const readiness=await(await call('/api/launch')).json();assert.equal(readiness.authenticationEnabled,false);assert.equal(readiness.checkoutEnabled,false);assert.equal('ADMIN_EMAILS' in readiness,false);
+const sitemap=await call('/sitemap.xml');assert.equal(sitemap.status,200);const xml=await sitemap.text();assert.ok(xml.includes('/product/'));assert.ok(!xml.includes('<loc>https://stride.test/account</loc>'));
+const htmlEnv={ASSETS:{fetch:async()=>new Response(await readFile('dist/client/index.html','utf8'),{headers:{'Content-Type':'text/html'}})}};
+const html=await worker.fetch(new Request('https://stride.test/product/'+encodeURIComponent(id)),htmlEnv);assert.equal(html.status,200);const meta=await html.text();assert.ok(meta.includes('og:image'));assert.ok(meta.includes('catalogue-images'));assert.match(html.headers.get('Content-Security-Policy'),/frame-ancestors 'none'/);
+const privatePage=await worker.fetch(new Request('https://stride.test/account'),htmlEnv);assert.equal(privatePage.headers.get('Cache-Control'),'no-store');assert.equal(privatePage.headers.get('X-Robots-Tag'),'noindex, nofollow');
+assert.equal((await worker.fetch(new Request('https://stride.test/product/missing'),htmlEnv)).status,404);
+assert.equal((await worker.fetch(new Request('https://stride.test/missing'),htmlEnv)).status,404);
+assert.equal((await worker.fetch(new Request('https://stride.test/offline.html'),htmlEnv)).status,200);
+const manifest=JSON.parse(await readFile('dist/client/manifest.webmanifest','utf8'));assert.equal(manifest.display,'standalone');assert.ok(manifest.icons.some(icon=>icon.sizes==='512x512'));
+const sw=await readFile('dist/client/sw.js','utf8');assert.ok(!sw.includes('__STRIDE_BUILD_ID__'));
+assert.equal((await call('/api/unknown')).status,404);
 await rm('.sites-runtime/worker-test.mjs');sql.close();delete globalThis.__strideTestEnv;
 console.log('PASS: catalogue, product routes, quantities, plan validation, concurrent request idempotency, ownership isolation, origin checks, CSV export and page routing.');
 // The standalone Worker must serve only known-format R2 keys on its own origin.

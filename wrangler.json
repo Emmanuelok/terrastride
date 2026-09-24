@@ -4,20 +4,46 @@
   "account_id": "e24b9546211a6f1a310bf8ac9c411114",
   "main": "dist/server/index.js",
   "compatibility_date": "2026-06-01",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "workers_dev": true,
   "preview_urls": false,
   "assets": {
     "directory": "dist/client",
     "binding": "ASSETS",
-    "run_worker_first": ["/api/*", "/catalogue-images/*"],
+    "run_worker_first": [
+      "/*",
+      "!/assets/*",
+      "!/fonts/*",
+      "!/icons/*",
+      "!/og/*",
+      "!/images/*",
+      "!/sw.js",
+      "!/manifest.webmanifest",
+      "!/favicon.svg",
+      "!/offline.html"
+    ],
     "not_found_handling": "single-page-application"
   },
-  "d1_databases": [{
-    "binding": "DB",
-    "database_name": "terrastride-db",
-    "database_id": "91930849-cc37-4e21-88db-2d9ac88107f5",
-    "migrations_dir": "drizzle"
-  }],
-  "r2_buckets": [{ "binding": "IMAGES", "bucket_name": "terrastride-images" }]
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "terrastride-db",
+      "database_id": "91930849-cc37-4e21-88db-2d9ac88107f5",
+      "migrations_dir": "drizzle"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "IMAGES",
+      "bucket_name": "terrastride-images"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "*/5 * * * *"
+    ]
+  },
+  "keep_vars": true
 }
