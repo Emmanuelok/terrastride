@@ -24,7 +24,8 @@
       "!/favicon.svg",
       "!/offline.html"
     ],
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "single-page-application",
+    "html_handling": "none"
   },
   "d1_databases": [
     {

@@ -5,7 +5,7 @@ import {
   isAuthConfigured, readJsonBody, RequestError, validWriteOrigin,
   type AuthSession,
 } from '@/lib/auth';
-import { hasAdminConfiguration, type LaunchEnvironment } from '@/lib/launch';
+import { hasAdminConfiguration, isAdminEmailAllowed, type LaunchEnvironment } from '@/lib/launch';
 
 function bindings() { return env as unknown as LaunchEnvironment; }
 function db() {
@@ -70,7 +70,7 @@ export async function GET(req: Request) {
       plans: result[4].results.map(item => ({ ...item, data: JSON.parse(String(item.data)) })),
       email: session?.user.email || null,
       user: session?.user || null,
-      auth: { enabled: isAuthConfigured(bindings()) },
+      auth: { enabled: isAuthConfigured(bindings()), staff: !!session && isAdminEmailAllowed(bindings(), session.user.email) },
     }, cookie);
   } catch (error) { return errorResponse(error, cookie); }
 }

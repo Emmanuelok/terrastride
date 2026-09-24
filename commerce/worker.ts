@@ -6,7 +6,7 @@ import {getLaunchReadiness,type LaunchEnvironment} from '../lib/launch';
 import {dispatchRequestNotifications} from '../lib/notifications';
 import {secureResponse,rewriteMetadata,sitemap} from './metadata';
 type Bindings = LaunchEnvironment & { ASSETS: Fetcher; IMAGES?: R2Bucket };
-export default {
+const worker = {
   async scheduled(_event: ScheduledController, env: Bindings, ctx: ExecutionContext) {
     ctx.waitUntil((async()=>{
       const now=Date.now();
@@ -63,3 +63,5 @@ export default {
     return secureResponse(asset);
   }
 };
+
+export default worker;

@@ -9,6 +9,10 @@ const publicRoot=path.join(root,process.argv.includes('--built')?'dist/client':'
 const assetPath=relative=>path.join(publicRoot,relative.replace(/^public\//,''));
 const readAsset=(relative,encoding)=>readFile(assetPath(relative),encoding);
 const origin='https://stride.test';
+// Cloudflare's default HTML canonicalization redirects /offline.html; the
+// install precache deliberately rejects redirects, so keep its exact URL.
+const workerConfig=JSON.parse(await readFile(path.join(root,'wrangler.json'),'utf8'));
+assert.equal(workerConfig.assets.html_handling,'none','Offline precaching requires /offline.html to respond without a redirect');
 const handlers={}, stores=new Map(), fetches=[];
 let offline=false, claims=0, skips=0;
 const normalize=value=>new URL(typeof value==='string'?value:value.url,origin).href;
